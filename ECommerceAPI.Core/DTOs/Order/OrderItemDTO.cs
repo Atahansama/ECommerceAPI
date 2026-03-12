@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerceAPI.Domain.Entites
+namespace ECommerceAPI.Core.DTOs.Order
 {
-    public class Cart
+    public class OrderItemDTO
     {
-        public int CartId { get; set; }
-        public int UserID { get; set; } 
         public int ProductID { get; set; }
-        public Product Product { get; set; } = null!;
+        public string ProductName { get; set; } = string.Empty;
         public int Quantity { get; set; }
-
+        public decimal UnitPrice { get; set; }
     }
 }

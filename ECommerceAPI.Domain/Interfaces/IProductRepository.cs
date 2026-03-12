@@ -16,7 +16,7 @@ namespace ECommerceAPI.Domain.Interfaces
         Task<Product> GetByIdWithCategoriesAsync(int id);
         Task<IEnumerable<Product>> GetCategoryProductsAsync(string url, int page, int pageSize);
         Task<int> GetCountByCategoryAsync(string url);
-        Task<IEnumerable<Product>> GetSearchProductAsync(string url, int page, int pageSize);
+        Task<IEnumerable<Product>> GetSearchProductAsync(string keyword, int page, int pageSize);
         Task<int> GetSearchCountAsync(string keyword);
         Task CreateProductsWithCategoriesAsync(Product entity, int[] categoryIds);
         Task UpdateProductCategoriesAsync(int productId, int[] categoryIds);
