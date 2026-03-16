@@ -34,7 +34,7 @@ namespace ECommerceAPI.Infrastructure.Repositories
 
         public async Task<int> GetOrderCountAsync(int userId)
         {
-            return await _context.Orders.Where(o =>  userId == o.OrderID).CountAsync();
+            return await _context.Orders.Where(o =>  userId == o.UserID).CountAsync();
         }
 
         public async Task<OrderItem?> GetOrderItemByIdAsync(int orderItemId)

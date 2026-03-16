@@ -113,6 +113,7 @@ namespace ECommerceAPI.Infrastructure.Repositories
             var product = await _context.Products.FindAsync(productid);
             if (product != null)
             {
+                if (product.Stock < quantity) throw new Exception($"Insufficient stock for product: {product.ProductName}");
                 product.Stock = product.Stock - quantity;
                 await _context.SaveChangesAsync();
             }

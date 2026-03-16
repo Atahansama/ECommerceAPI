@@ -48,6 +48,10 @@ builder.Services.AddScoped<IAddressService, AddressService>();
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var secretKey = jwtSettings["SecretKey"]!;
 
+if (string.IsNullOrWhiteSpace(secretKey)) throw new Exception("JWT SecretKey is missing");
+
+if (secretKey.Length < 32) throw new Exception("JWT SecretKey must be at least 32 characters long");
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -56,6 +60,7 @@ builder.Services.AddAuthentication(options =>
 
 .AddJwtBearer(options =>
 {
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
